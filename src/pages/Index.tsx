@@ -330,7 +330,7 @@ const Index = () => {
           <Card className="shadow-lg">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl">Welcome Back</CardTitle>
-              <p className="text-muted-foreground">Sign in to your Study Buddy account</p>
+              <p className="text-muted-foreground">Sign in to your StudySync account</p>
             </CardHeader>
             <CardContent className="space-y-4">
               {error && <div className="text-red-500 text-sm text-center">{error}</div>}
@@ -387,7 +387,7 @@ const Index = () => {
           <Card className="shadow-lg">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl">Get Started</CardTitle>
-              <p className="text-muted-foreground">Create your Study Buddy account</p>
+              <p className="text-muted-foreground">Create your StudySync account</p>
             </CardHeader>
             <CardContent className="space-y-4">
               {error && <div className="text-red-500 text-sm text-center">{error}</div>}
@@ -705,7 +705,7 @@ const Index = () => {
                   What Makes Us Different?
                 </h2>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  Why choose Study Buddy for your academic journey?
+                  Why choose StudySync for your academic journey?
                 </p>
               </div>
 
@@ -811,7 +811,7 @@ const Index = () => {
                     <div className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center">
                       <BookOpen className="w-6 h-6 text-primary-foreground" />
                     </div>
-                    <span className="text-xl font-bold text-foreground">Study Buddy</span>
+                    <span className="text-xl font-bold text-foreground">StudySync</span>
                   </div>
                   <p className="text-muted-foreground mb-4">
                     Your smart study companion for organizing notes, planning sessions, and tracking academic progress.
