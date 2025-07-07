@@ -280,7 +280,7 @@ const NotesManager = () => {
             <option key={subject} value={subject}>{subject}</option>
           ))}
         </select>
-        <Button className="ml-auto" onClick={() => { cancelForm(); setShowCreateForm(true); }}>
+        <Button className="ml-auto text-white bg-[#B5828C] hover:bg-[#E5989B] px-4 py-2 rounded" onClick={() => { cancelForm(); setShowCreateForm(true); }}>
           <Plus size={16} /> Add Note
         </Button>
       </div>
@@ -320,8 +320,8 @@ const NotesManager = () => {
                 ))}
               </div>
               <p className="text-sm text-gray-500">Created: {note.createdAt} | Updated: {note.updatedAt}</p>
-              <div className="flex gap-2 mt-4">
-                <Button size="sm" onClick={() => setViewingNote(note)}>
+              <div className="flex gap-2 mt-4 ">
+                <Button className="text-white bg-[#B5828C] hover:bg-[#E5989B] px-4 py-2 rounded" size="sm" onClick={() => setViewingNote(note)}>
                   View
                 </Button>
                 <Button size="sm" variant="outline" onClick={() => openEditForm(note)}>

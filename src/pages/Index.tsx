@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, FileText, Calendar, User, ArrowRight, CheckCircle, Clock, TrendingUp, Upload, BarChart3, LogIn, UserPlus, Plus, Folder, Target, Check, Trash2 } from 'lucide-react';
+import { BookOpen, FileText, Calendar, User, ArrowRight, CheckCircle, Clock, TrendingUp, Upload, BarChart3, LogIn, UserPlus, Plus, Folder, Target, Check,BarChart, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Header from '@/components/Header';
@@ -573,7 +573,7 @@ const Index = () => {
             <Card className="lg:col-span-1">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <Upload className="w-5 h-5" />
+                  <BarChart className="w-5 h-5" />
                   <span>Study Statistics</span>
                 </CardTitle>
               </CardHeader>
