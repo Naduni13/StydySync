@@ -56,7 +56,7 @@ const Header = ({ activeTab, onTabChange, user, onLogout, isLoggedIn }: HeaderPr
               </div>
 
               <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-[#5C7285]">
+                <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-[#574964]">
                   StudySync
                 </h1>
               </div>
