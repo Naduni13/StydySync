@@ -14,7 +14,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <AuthProvider> {/* ✅ Wrap here */}
+      <AuthProvider>  
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
