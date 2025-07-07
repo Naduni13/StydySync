@@ -152,7 +152,7 @@ const Profile = ({ user, onUpdateUser }: ProfileProps) => {
                     {profileData.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
-                {isEditing && (
+                {/* {isEditing && (
                   <div>
                     <input type="file" id="avatar-upload" className="hidden" onChange={handleFileUpload} accept="image/*" />
                     <label htmlFor="avatar-upload" className="flex items-center gap-2 px-4 py-2 border border-border rounded-md cursor-pointer hover:bg-secondary">
@@ -160,7 +160,7 @@ const Profile = ({ user, onUpdateUser }: ProfileProps) => {
                       Change Photo
                     </label>
                   </div>
-                )}
+                )} */}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

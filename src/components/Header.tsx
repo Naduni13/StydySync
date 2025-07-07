@@ -2,11 +2,12 @@
 import React from 'react';
 import { BookOpen, User, Calendar, FileText, LayoutDashboard, LogOut, BarChart3, Upload, LogIn, UserPlus, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
+import logo from "../../public/study.png";
 interface HeaderProps {
   activeTab: string;
   onTabChange: (tab: string) => void;
   user?: { name: string; email: string } | null;
+
   onLogout?: () => void;
   isLoggedIn: boolean;
 }
@@ -50,33 +51,34 @@ const Header = ({ activeTab, onTabChange, user, onLogout, isLoggedIn }: HeaderPr
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <button onClick={() => onTabChange('home')} className="flex items-center space-x-3">
-              <div className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-primary-foreground" />
+              <div className="w-9 h-10 rounded-xl flex items-center justify-center">
+                <img src={logo} alt="StudySync Logo" className="w-10 h-10 object-contain" />
               </div>
+
               <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-[#8E7DBE]">
                   StudySync
                 </h1>
               </div>
             </button>
           </div>
 
+
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             {navigation.map((item) => {
               const Icon = item.icon;
-              const isActive = activeTab === item.id || 
+              const isActive = activeTab === item.id ||
                 (item.id === 'features' && activeTab === 'home' && !isLoggedIn);
-              
+
               return (
                 <button
                   key={item.id}
                   onClick={item.id === 'features' ? handleFeatures : () => onTabChange(item.id)}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    isActive
-                      ? 'bg-primary text-primary-foreground shadow-sm'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
-                  }`}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
+                    ? 'bg-primary text-primary-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+                    }`}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{item.label}</span>
@@ -104,22 +106,23 @@ const Header = ({ activeTab, onTabChange, user, onLogout, isLoggedIn }: HeaderPr
               </>
             ) : (
               <div className="hidden md:flex items-center space-x-2">
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
+                <Button
+                  size="sm"
                   onClick={() => onTabChange('login')}
-                  className="text-muted-foreground hover:text-foreground"
+                  className="border-0 text-white bg-[#C599B6] hover:bg-[#E6B2BA] transition duration-200"
                 >
                   Login
                 </Button>
-                <Button 
-                  size="sm" 
+
+                <Button
+                  size="sm"
                   onClick={() => onTabChange('signup')}
-                  className="gradient-primary border-0 text-primary-foreground"
+                  className="border-0 text-white bg-[#C599B6] hover:bg-[#E6B2BA] transition duration-200"
                 >
                   Sign Up
                 </Button>
               </div>
+
             )}
           </div>
         </div>
@@ -128,18 +131,17 @@ const Header = ({ activeTab, onTabChange, user, onLogout, isLoggedIn }: HeaderPr
         <div className="md:hidden flex items-center justify-around py-2 border-t border-border bg-white/50">
           {navigation.slice(0, 4).map((item) => {
             const Icon = item.icon;
-            const isActive = activeTab === item.id || 
+            const isActive = activeTab === item.id ||
               (item.id === 'features' && activeTab === 'home' && !isLoggedIn);
-            
+
             return (
               <button
                 key={item.id}
                 onClick={item.id === 'features' ? handleFeatures : () => onTabChange(item.id)}
-                className={`flex flex-col items-center space-y-1 p-2 rounded-lg transition-all duration-200 ${
-                  isActive
-                    ? 'text-primary'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+                className={`flex flex-col items-center space-y-1 p-2 rounded-lg transition-all duration-200 ${isActive
+                  ? 'text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+                  }`}
               >
                 <Icon className="w-5 h-5" />
                 <span className="text-xs font-medium">{item.label}</span>

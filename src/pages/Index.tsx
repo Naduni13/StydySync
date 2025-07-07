@@ -3,11 +3,12 @@ import { BookOpen, FileText, Calendar, User, ArrowRight, CheckCircle, Clock, Tre
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Header from '@/components/Header';
-import Dashboard from '@/components/Dashboard';
+//import Dashboard from '@/components/Dashboard';
 import NotesManager from '@/components/NotesManager';
 import StudyPlanner from '@/components/StudyPlanner';
 import Profile from '@/components/Profile';
 import Resources from '@/components/resources';
+import logo from "../../public/study.png"
 
 import {
   createUserWithEmailAndPassword,
@@ -87,11 +88,11 @@ const Index = () => {
   });
   const [recentActivity, setRecentActivity] = useState<Activity[]>([]);
   const [stats, setStats] = useState({
-      totalNotes: 0,
-      completedTasks: 0,
-      pendingTasks: 0,
-      totalTasks: 0
-    });
+    totalNotes: 0,
+    completedTasks: 0,
+    pendingTasks: 0,
+    totalTasks: 0
+  });
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -143,33 +144,33 @@ const Index = () => {
     };
 
     const fetchStats = async () => {
-          try {
-            const notesSnap = await getDocs(collection(db, 'notes'));
-            const tasksSnap = await getDocs(collection(db, 'tasks'));
-    
-            const userNotes = notesSnap.docs
-              .map(doc => doc.data())
-              .filter(note => note.userId === user.uid);
-    
-            const userTasks = tasksSnap.docs
-              .map(doc => doc.data())
-              .filter(task => task.userId === user.uid);
-    
-            const totalNotes = userNotes.length;
-            const completedTasks = userTasks.filter(task => task.completed).length;
-            const pendingTasks = userTasks.filter(task => !task.completed).length;
-            const totalTasks = userTasks.length;
-    
-            setStats({
-              totalNotes,
-              completedTasks,
-              pendingTasks,
-              totalTasks
-            });
-          } catch (error) {
-            console.error('Error fetching stats:', error);
-          }
-        };
+      try {
+        const notesSnap = await getDocs(collection(db, 'notes'));
+        const tasksSnap = await getDocs(collection(db, 'tasks'));
+
+        const userNotes = notesSnap.docs
+          .map(doc => doc.data())
+          .filter(note => note.userId === user.uid);
+
+        const userTasks = tasksSnap.docs
+          .map(doc => doc.data())
+          .filter(task => task.userId === user.uid);
+
+        const totalNotes = userNotes.length;
+        const completedTasks = userTasks.filter(task => task.completed).length;
+        const pendingTasks = userTasks.filter(task => !task.completed).length;
+        const totalTasks = userTasks.length;
+
+        setStats({
+          totalNotes,
+          completedTasks,
+          pendingTasks,
+          totalTasks
+        });
+      } catch (error) {
+        console.error('Error fetching stats:', error);
+      }
+    };
 
 
     if (user) {
@@ -578,26 +579,26 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <Card className="card-hover">
-                            <CardHeader><CardTitle></CardTitle></CardHeader>
-                            <CardContent className="space-y-4">
-                              <div className="text-center p-4 gradient-primary rounded-lg">
-                                <div className="text-3xl font-bold text-primary-foreground">{stats.totalNotes}</div>
-                                <div className="text-primary-foreground/80">Total Notes</div>
-                              </div>
-                              <div className="text-center p-4 gradient-secondary rounded-lg">
-                                <div className="text-3xl font-bold text-primary-foreground">{stats.completedTasks}</div>
-                                <div className="text-primary-foreground/80">Tasks Completed</div>
-                              </div>
-                              <div className="text-center p-4 gradient-accent rounded-lg">
-                                <div className="text-3xl font-bold text-primary-foreground">{stats.pendingTasks}</div>
-                                <div className="text-primary-foreground/80">Pending Tasks</div>
-                              </div>
-                              <div className="text-center p-4 bg-white border border-border rounded-lg">
-                                <div className="text-3xl font-bold text-foreground">{stats.totalTasks}</div>
-                                <div className="text-muted-foreground">Total Tasks</div>
-                              </div>
-                            </CardContent>
-                          </Card>
+                  <CardHeader><CardTitle></CardTitle></CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="text-center p-4 gradient-primary rounded-lg">
+                      <div className="text-3xl font-bold text-primary-foreground">{stats.totalNotes}</div>
+                      <div className="text-primary-foreground/80">Total Notes</div>
+                    </div>
+                    <div className="text-center p-4 gradient-secondary rounded-lg">
+                      <div className="text-3xl font-bold text-primary-foreground">{stats.completedTasks}</div>
+                      <div className="text-primary-foreground/80">Tasks Completed</div>
+                    </div>
+                    <div className="text-center p-4 gradient-accent rounded-lg">
+                      <div className="text-3xl font-bold text-primary-foreground">{stats.pendingTasks}</div>
+                      <div className="text-primary-foreground/80">Pending Tasks</div>
+                    </div>
+                    <div className="text-center p-4 bg-white border border-border rounded-lg">
+                      <div className="text-3xl font-bold text-foreground">{stats.totalTasks}</div>
+                      <div className="text-muted-foreground">Total Tasks</div>
+                    </div>
+                  </CardContent>
+                </Card>
                 <Button
                   onClick={() => setCurrentView('profile')}
                   variant="ghost"
@@ -615,13 +616,13 @@ const Index = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
               <div className="text-center">
                 <div className="flex justify-center mb-8">
-                  <div className="w-20 h-20 gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
-                    <BookOpen className="w-12 h-12 text-primary-foreground" />
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center">
+                    <img src={logo} alt="StudySync Logo" className="w-100 h-30 object-contain" />
                   </div>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 animate-fade-in">
-                  Your Smart <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Study Companion</span>
+                  Your Smart <span style={{ color: '#8E7DBE' }} className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Study Companion</span>
                 </h1>
 
                 <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -630,13 +631,15 @@ const Index = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
                   <Button
+                    style={{ backgroundColor: '#A888B5', color: 'white' }}
                     size="lg"
-                    className="gradient-primary border-0 text-primary-foreground px-8 py-4 text-lg font-semibold hover:scale-105 transition-transform duration-200"
+                    className="border-0 px-8 py-4 text-lg font-semibold hover:scale-105 transition-transform duration-200"
                     onClick={() => setCurrentView('signup')}
                   >
                     <UserPlus className="w-5 h-5 mr-2" />
                     Sign Up Free
                   </Button>
+
                   <Button
                     variant="outline"
                     size="lg"
@@ -687,7 +690,8 @@ const Index = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="card-hover text-center bg-white border border-border shadow-sm">
+
+                <Card className="card-hover text-center gradient-primary border-0">
                   <CardContent className="p-8">
                     <Upload className="w-12 h-12 text-accent-foreground mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-foreground mb-2">Resource Upload</h3>
@@ -769,20 +773,21 @@ const Index = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div className="animate-fade-in">
-                  <div className="text-4xl font-bold text-primary mb-2">10K+</div>
+                  <div className="text-4xl font-bold text-[#B5828C] mb-2">10K+</div>
                   <p className="text-muted-foreground">Active Students</p>
                 </div>
                 <div className="animate-fade-in">
-                  <div className="text-4xl font-bold text-primary mb-2">500K+</div>
+                  <div className="text-4xl font-bold text-[#B5828C] mb-2">500K+</div>
                   <p className="text-muted-foreground">Notes Created</p>
                 </div>
                 <div className="animate-fade-in">
-                  <div className="text-4xl font-bold text-primary mb-2">95%</div>
+                  <div className="text-4xl font-bold text-[#B5828C] mb-2">95%</div>
                   <p className="text-muted-foreground">Success Rate</p>
                 </div>
               </div>
             </div>
           </section>
+
 
           <section className="py-20 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10">
             <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -794,12 +799,13 @@ const Index = () => {
               </p>
               <Button
                 size="lg"
-                className="gradient-primary border-0 text-primary-foreground px-8 py-4 text-lg font-semibold hover:scale-105 transition-transform duration-200"
+                className="border-0 px-8 py-4 text-lg font-semibold transition-transform duration-200 bg-[#8174A0] text-white hover:bg-[#D4A6B0] hover:scale-105"
                 onClick={() => setCurrentView('signup')}
               >
                 Start Your Journey
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
+
             </div>
           </section>
 
@@ -808,10 +814,10 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className="col-span-2">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center">
+                    {/* <div className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center">
                       <BookOpen className="w-6 h-6 text-primary-foreground" />
-                    </div>
-                    <span className="text-xl font-bold text-foreground">StudySync</span>
+                    </div> */}
+                    <span className="text-xl font-bold text-[#624E88]">StudySync</span>
                   </div>
                   <p className="text-muted-foreground mb-4">
                     Your smart study companion for organizing notes, planning sessions, and tracking academic progress.

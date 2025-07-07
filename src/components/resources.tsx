@@ -260,7 +260,7 @@ const Resources = ({ onTabChange }: ResourcesProps) => {
                 </div>
               ) : (
                 <p className="text-muted-foreground mb-4">
-                  Drag and drop your study materials here
+                  Attach your study materials here
                 </p>
               )}
 
